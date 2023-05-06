@@ -1,10 +1,16 @@
 import express from 'express'
 import cors from 'cors'
+import dbConnection from '../database/config.js'
 
 class Server {
   constructor () {
     this.port = process.env.PORT
     this.app = express()
+    this.connectionDB()
+  }
+
+  async connectionDB () {
+    await dbConnection()
   }
 
   middlewares () {
